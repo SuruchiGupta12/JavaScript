@@ -46,3 +46,27 @@ console.log(typeof anotherId);  //to know datatype of any var
 
 console.log(typeof myFunction);  // is object function only
 
+//++++++++++++++++++++++++++++++++++++++++
+
+// Stack(primitive) - works on copied value
+//  Heap(non-primitive) - changes the original value
+
+let myName = "Suruchi"  //in stack
+
+let myNewName = myName
+
+myNewName = "Richa"     //changes copy
+
+console.log(myName);
+console.log(myNewName);
+
+let userOne = {         //heap memory
+    email : "hc@hc.com",
+    upi : "hc&isl"
+}
+
+let userTwo = userOne
+
+userTwo.email = "abc@xyz.com"   //changes both
+console.log(userOne.email);
+console.log(userTwo.email);
