@@ -22,11 +22,11 @@ switch (month) {
         //break;
     case "april":
         console.log("april");
-        break;
+        // break;
 
     default:
         console.log("default case match");
         break;
 }
 
-// if break is not there then every case after that will be excuted without checking except default
+// if break is not there then every case after that will be excuted without checking condition
