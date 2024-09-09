@@ -1,0 +1,40 @@
+Introduction:
+
+DOM stand for document object model
+Window is an object and document is its property
+console.log(document)
+we make tree diagram =  window->document->html->head,body->....
+console.log(document.baseURL)   gives baseURL of that webpage
+console.log(document.links)     gives all the links present in that web page in form of HTMLcollection but can accessed using [0] for 1st url [1] for 2nd url etc.
+document.getElementById("id_name") = gives that id tag and we can change it also by using further.innerHTML = <h1> CHai </h1> 
+
+2nd video of DOM :
+
+document.getElementById('id_name').id = gives id/class of that given id
+document.getElementById('id_name').className = gives class name of that id
+document.getElementById('id_name').getAttribute('id/class') = gives attributes value like key-value pair
+document.getElementById('id_name').setAttribute('class','my_class') = changes/sets/overwrites attribute value
+this long values can be stored in a var eg-
+const title = document.getElementById('id_name')
+now this can be used to refer and make changes
+title.style.backgroundColor = 'green'
+how to add content?
+title.textContent =  gives content written in that id
+title.innerHTML & title.innerText also gives the same value
+but diff b/w textContent & innerText is innerText shows only the text visible on webpage whereas textContent shows all the actual txt present in html file
+innerHTML shows all the html code written inside that content
+document.querySelector('h1')    gives the first h1 tag
+document.querySelectorAll('h1')    gives all h1 tag present 
+document.querySelector('#title')    gives tag with id as title same for class with .class_name
+for selecting any tag we can use querySelector and put it in variable and do manipulation
+
+Nodelist and HTMLcollection are not pure array but can be treated as array or can be changed to array Nodelist contains prototype of foreach but HTMLcollection doesnt
+const temp= document.querySelectorAll('li') 
+now temp is a Nodelist and this can be accessed as array by using indexes and not directly
+const temp= document.getElementByClassName('list-item')
+this return a HTMLcollection and here for-each loop is not there so to use those property we need to convert it to array
+to convert to array we use = Array.from(temp)     now we can use property of array on temp
+const myarr = Array.from(temp)
+myarr.forEach (function (item){
+    item.style.Color = 'orange' 
+})
