@@ -1,3 +1,5 @@
+<!-- edit and remove elements in DOM -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +14,7 @@
     </ul>
 </body>
 <script>
+    //adding list item in ul
     function addLanguage(langName){
         const li = document.createElement('li');
         li.innerHTML = `${langName}`
@@ -19,8 +22,10 @@
     }
     addLanguage("python")
     addLanguage("typescript")
+    //in the above part everytime we attach a li it traverses the whole tree of dom which can be bulky in large cases
 
-    function addOptiLanguage(langName){
+    //optimized approach for above problem
+        function addOptiLanguage(langName){
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(langName))
         document.querySelector('.language').appendChild(li)
@@ -28,20 +33,20 @@
     addOptiLanguage('golang')
 
     //Edit
-    const secondLang = document.querySelector("li:nth-child(2)")
-    console.log(secondLang);
+    const secondLang = document.querySelector("li:nth-child(2)")    //selcting python to be edited
+    console.log(secondLang);    //selects li of python
     //secondLang.innerHTML = "Mojo"
     const newli = document.createElement('li')
-    newli.textContent = "Mojo"
-    secondLang.replaceWith(newli)
+    newli.textContent = "Mojo"  //another way of innerhtml
+    secondLang.replaceWith(newli)   //becoz refrence existed so we just replaced it rather appending a new child
 
-    //edit
+    //edit- javascript with typescript
     const firstLang = document.querySelector("li:first-child")
     firstLang.outerHTML = '<li>TypeScript</li>'
 
     //remove
     const lastLang = document.querySelector('li:last-child')
-    lastLang.remove()
+    lastLang.remove()   //removes golang
 
 
 </script>
