@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //Events are invoked based on some activities
+
+    //1st method is using onclick event in html - but not recommended as it is not feasible in large scale
+
+    //2nd way - gives lesser features
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+
+    //previously used
+     // attachEvent()
+    // jQuery - onEvent
+
+    //3rd way - best
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //e is event object
+    //     console.log("owl clicked");
+    // }, false)    3rd parameter default is also false this is known as event propagation
+    
+
+    //basic events (found in e object)
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+    
+    // Event Propagation
+    // Event bubbling when it is false prints owl and then ul
+    //  Event Capturing when val is true prints ul then owl
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+    
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()  stops bubbling
+    // }, false)
+
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();  prevents you taking to google.com
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+   
+    //task is to remove the images once clicked on it
+    document.querySelector('#images').addEventListener('click', function(e){
+        //console.log(e.target.parentNode);  //gives each li
+        console.log(e.target.tagName);  //gives tags like img ,li etc
+        if (e.target.tagName === 'IMG') {   //check s.t only imgs are removed and not all li
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()   //basic method
+        }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt) //other way to remove
+</script>
+</html>
